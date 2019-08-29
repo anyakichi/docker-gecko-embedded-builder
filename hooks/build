@@ -1,0 +1,28 @@
+#!/bin/bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+build()
+{
+    board=$1
+    firefox=$2
+
+    docker build \
+        ${DOCKER_BUILD_OPTS:-} \
+        -t ${DOCKER_REPO}:${board} \
+        -f ${board}/Dockerfile ${board}
+
+    docker build --build-arg builder_base=${board} \
+        ${DOCKER_BUILD_OPTS:-} \
+        -t ${DOCKER_REPO}:${board}-${firefox} \
+        -f ${firefox}/Dockerfile ${firefox}
+}
+
+if [ $# -eq 0 ]; then
+    build rzg2 esr68
+    build rzg2 esr60
+else
+    build "$@"
+fi
