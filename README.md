@@ -27,7 +27,7 @@ builder@rzg2e-esr60:/build/build$ build
 ん。
 
 ```
-builder@rzg2-1:/build/build$ bitbake core-image-weston
+builder@rzg2e-esr60:/build/build$ bitbake core-image-weston
 ```
 
 ## RZ/G2E (ek874) 向けの Firefox 68 ESR を含んだビルド
@@ -47,3 +47,19 @@ builder@rzg2e-esr68:/build/build$ build
 
 din に指定するイメージを anyakichi/gecko-embedded-builder:rzg2 に変更し
 てビルドしてください。
+
+## ビルドの再開
+
+コンテナを終了してもファイル一式は残っているので、いつでも終了して構い
+ません。ビルドを再開するには元のディレクトリに戻ってから din コマンドを
+実行します。
+
+```
+$ cd /path/to/rzg2e-esr60
+$ din anyakichi/gecko-embedded-builder:rzg2-esr60
+builder@rzg2e-esr60:/build$ setup
+builder@rzg2e-esr60:/build/build$ build
+```
+
+extract は既に実行済みであれば（ソースコードは既に展開されているので）
+再度実行する必要はありません。
