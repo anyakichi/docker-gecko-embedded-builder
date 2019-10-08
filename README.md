@@ -8,16 +8,16 @@ din コマンドを PATH の通った場所に配置してください。
 $ curl -o ~/.local/bin/din https://raw.githubusercontent.com/anyakichi/docker-buildenv/master/din.sh
 ```
 
-## RZ/G2E (ek874) 向けの Firefox 60 ESR を含んだビルド
+## ek874 向けの BSP-1.0.1 に Firefox 60 ESR を含めたビルド
 
 以下のコマンドを実行してください。
 
 ```
-$ mkdir rzg2e-esr60 && cd rzg2e-esr60
-$ din anyakichi/gecko-embedded-builder:rzg2-esr60
-builder@rzg2e-esr60:/build$ extract
-builder@rzg2e-esr60:/build$ setup
-builder@rzg2e-esr60:/build/build$ build
+$ mkdir ek874-esr60 && cd ek874-esr60
+$ din anyakichi/gecko-embedded-builder:ek874-101-esr60
+builder@ek874-esr60:/build$ extract
+builder@ek874-esr60:/build$ setup
+builder@ek874-esr60:/build/build$ build
 ```
 
 実際には extract 後に proprietary なファイルを手動で配置するようメッセー
@@ -27,26 +27,32 @@ builder@rzg2e-esr60:/build/build$ build
 ん。
 
 ```
-builder@rzg2e-esr60:/build/build$ bitbake core-image-weston
+builder@ek874-esr60:/build/build$ bitbake core-image-weston
 ```
 
-## RZ/G2E (ek874) 向けの Firefox 68 ESR を含んだビルド
+## hihope-rzg2m 向けの BSP-1.0.1-update1 に Firefox 68 ESR を含めたビルド
 
-din に指定するイメージを anyakichi/gecko-embedded-builder:rzg2-esr68 に
-変更してビルドしてください。
+din に指定するイメージを
+anyakichi/gecko-embedded-builder:hihope-101u1-esr68 に変更してビルドして
+ください。
 
 ```
-$ mkdir rzg2e-esr68 && cd rzg2e-esr68
-$ din anyakichi/gecko-embedded-builder:rzg2-esr68
-builder@rzg2e-esr68:/build$ extract
-builder@rzg2e-esr68:/build$ setup
-builder@rzg2e-esr68:/build/build$ build
+$ mkdir ek874-esr68 && cd ek874-esr68
+$ din anyakichi/gecko-embedded-builder:hihope-101u1-esr68
+builder@ek874-esr68:/build$ extract
+builder@ek874-esr68:/build$ setup
+builder@ek874-esr68:/build/build$ build
 ```
 
-## RZ/G2E (ek874) 向けの Firefox を含まないビルド
 
-din に指定するイメージを anyakichi/gecko-embedded-builder:rzg2 に変更し
-てビルドしてください。
+## その他のビルド
+
+使用するイメージを変更することで、ターゲットボード・BSP バージョン・
+Firefox バージョンのそれぞれ異なる FW の作成が行なえます。指定可能な組は
+Dockerhub のタグから確認してください。
+
+https://hub.docker.com/r/anyakichi/gecko-embedded-builder/tags
+
 
 ## ビルドの再開
 

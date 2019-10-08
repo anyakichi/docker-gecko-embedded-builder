@@ -1,5 +1,5 @@
-ARG builder_base=rgz2
-FROM anyakichi/gecko-embedded-builder:${builder_base}
+ARG builder_base="anyakichi/yocto-builder"
+FROM ${builder_base}
 
 RUN \
   apt-get update \

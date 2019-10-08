@@ -1,5 +1,12 @@
 #!/bin/bash
 
-docker push ${DOCKER_REPO}:rzg2
-docker push ${DOCKER_REPO}:rzg2-esr68
-docker push ${DOCKER_REPO}:rzg2-esr60
+docker push ${DOCKER_REPO}:ek874-100-esr60
+docker push ${DOCKER_REPO}:ek874-100-esr68
+docker push ${DOCKER_REPO}:ek874-101-esr60
+docker push ${DOCKER_REPO}:ek874-101-esr68
+docker push ${DOCKER_REPO}:ek874-101u1-esr60
+docker push ${DOCKER_REPO}:ek874-101u1-esr68
+docker push ${DOCKER_REPO}:hihope-101-esr60
+docker push ${DOCKER_REPO}:hihope-101-esr68
+docker push ${DOCKER_REPO}:hihope-101u1-esr60
+docker push ${DOCKER_REPO}:hihope-101u1-esr68

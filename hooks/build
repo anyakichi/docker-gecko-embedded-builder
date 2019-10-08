@@ -6,23 +6,39 @@ set -o pipefail
 
 build()
 {
-    board=$1
-    firefox=$2
+    base=$1
+    platform=$2
+    machine=$3
+    version=$4
+    firefox=$5
+    tag=${6:-$3-$4-$5}
 
     docker build \
+        --build-arg builder_base=anyakichi/yocto-builder:${base} \
         ${DOCKER_BUILD_OPTS:-} \
-        -t ${DOCKER_REPO}:${board} \
-        -f ${board}/Dockerfile ${board}
-
-    docker build --build-arg builder_base=${board} \
-        ${DOCKER_BUILD_OPTS:-} \
-        -t ${DOCKER_REPO}:${board}-${firefox} \
+        -t ${DOCKER_REPO}:${base}-${firefox} \
         -f ${firefox}/Dockerfile ${firefox}
+
+    docker build \
+        --build-arg builder_base=${DOCKER_REPO}:${base}-${firefox} \
+        --build-arg meta_rzg2_version=${version} \
+        --build-arg yocto_machine=${machine} \
+        ${DOCKER_BUILD_OPTS:-} \
+        -t ${DOCKER_REPO}:${tag} \
+        -f ${platform}/Dockerfile ${platform}
 }
 
 if [ $# -eq 0 ]; then
-    build rzg2 esr68
-    build rzg2 esr60
+    build xenial-rocko rzg2 ek874        1.0.0         esr60 ek874-100-esr60
+    build xenial-rocko rzg2 ek874        1.0.0         esr68 ek874-100-esr68
+    build xenial-rocko rzg2 ek874        1.0.1         esr60 ek874-101-esr60
+    build xenial-rocko rzg2 ek874        1.0.1         esr68 ek874-101-esr68
+    build xenial-rocko rzg2 ek874        1.0.1-update1 esr60 ek874-101u1-esr60
+    build xenial-rocko rzg2 ek874        1.0.1-update1 esr68 ek874-101u1-esr68
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr60 hihope-101-esr60
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr68 hihope-101-esr68
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr60 hihope-101u1-esr60
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr68 hihope-101u1-esr68
 else
     build "$@"
 fi
