@@ -69,3 +69,18 @@ builder@rzg2e-esr60:/build/build$ build
 
 extract は既に実行済みであれば（ソースコードは既に展開されているので）
 再度実行する必要はありません。
+
+
+## パフォーマンスについて
+
+一部のディストリビューションにおいて Docker で overlayfs を使用している
+場合、コンテナが起動してプロンプトが出るまでに非常に時間がかかる場合があ
+ります。
+
+パフォーマンスが出ない場合には、overlayfs のモジュールパラメーターを調整
+すると改善する可能性があります。
+
+```
+$ sudo vi /etc/modprobe.d/overlay.conf
+options overlay redirect_dir=Y metacopy=Y
+```
