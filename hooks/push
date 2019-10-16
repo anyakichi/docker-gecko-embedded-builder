@@ -6,7 +6,13 @@ docker push ${DOCKER_REPO}:ek874-101-esr60
 docker push ${DOCKER_REPO}:ek874-101-esr68
 docker push ${DOCKER_REPO}:ek874-101u1-esr60
 docker push ${DOCKER_REPO}:ek874-101u1-esr68
-docker push ${DOCKER_REPO}:hihope-101-esr60
-docker push ${DOCKER_REPO}:hihope-101-esr68
-docker push ${DOCKER_REPO}:hihope-101u1-esr60
-docker push ${DOCKER_REPO}:hihope-101u1-esr68
+docker push ${DOCKER_REPO}:ek874-102-esr60
+docker push ${DOCKER_REPO}:ek874-102-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2m-101-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2m-101-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2m-101u1-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2m-101u1-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2m-102-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2m-102-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2n-102-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2n-102-esr68
