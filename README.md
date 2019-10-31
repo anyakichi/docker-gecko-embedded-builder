@@ -33,15 +33,15 @@ builder@ek874-esr60:/build/build$ bitbake core-image-weston
 ## hihope-rzg2m 向けの BSP-1.0.1-update1 に Firefox 68 ESR を含めたビルド
 
 din に指定するイメージを
-anyakichi/gecko-embedded-builder:hihope-101u1-esr68 に変更してビルドして
+anyakichi/gecko-embedded-builder:hihope-rzg2m-101u1-esr68 に変更してビルドして
 ください。
 
 ```
-$ mkdir ek874-esr68 && cd ek874-esr68
-$ din anyakichi/gecko-embedded-builder:hihope-101u1-esr68
-builder@ek874-esr68:/build$ extract
-builder@ek874-esr68:/build$ setup
-builder@ek874-esr68:/build/build$ build
+$ mkdir hihope-rzg2m-101u1-esr68 && cd hihope-rzg2m-101u1-esr68
+$ din anyakichi/gecko-embedded-builder:hihope-rzg2m-101u1-esr68
+builder@hihope-rzg2m-101u1-esr68:/build$ extract
+builder@hihope-rzg2m-101u1-esr68:/build$ setup
+builder@hihope-rzg2m-101u1-esr68:/build/build$ build
 ```
 
 
@@ -61,10 +61,10 @@ https://hub.docker.com/r/anyakichi/gecko-embedded-builder/tags
 実行します。
 
 ```
-$ cd /path/to/rzg2e-esr60
-$ din anyakichi/gecko-embedded-builder:rzg2-esr60
-builder@rzg2e-esr60:/build$ setup
-builder@rzg2e-esr60:/build/build$ build
+$ cd /path/to/ek874-esr60
+$ din anyakichi/gecko-embedded-builder:ek874-101-esr60
+builder@ek874-esr60:/build$ setup
+builder@ek874-esr60:/build/build$ build
 ```
 
 extract は既に実行済みであれば（ソースコードは既に展開されているので）
