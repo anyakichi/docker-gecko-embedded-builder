@@ -37,14 +37,26 @@ if [ $# -eq 0 ]; then
     build xenial-rocko rzg2 ek874        1.0.1-update1 esr68 ek874-101u1-esr68
     build xenial-rocko rzg2 ek874        1.0.2         esr60 ek874-102-esr60
     build xenial-rocko rzg2 ek874        1.0.2         esr68 ek874-102-esr68
+    build xenial-rocko rzg2 ek874        1.0.2-update1 esr60 ek874-102u1-esr60
+    build xenial-rocko rzg2 ek874        1.0.2-update1 esr68 ek874-102u1-esr68
+    build xenial-rocko rzg2 ek874        1.0.3         esr60 ek874-103-esr60
+    build xenial-rocko rzg2 ek874        1.0.3         esr68 ek874-103-esr68
     build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr60 hihope-rzg2m-101-esr60
     build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr68 hihope-rzg2m-101-esr68
     build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr60 hihope-rzg2m-101u1-esr60
     build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr68 hihope-rzg2m-101u1-esr68
     build xenial-rocko rzg2 hihope-rzg2m 1.0.2         esr60 hihope-rzg2m-102-esr60
     build xenial-rocko rzg2 hihope-rzg2m 1.0.2         esr68 hihope-rzg2m-102-esr68
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.2-update1 esr60 hihope-rzg2m-102u1-esr60
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.2-update1 esr68 hihope-rzg2m-102u1-esr68
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.3         esr60 hihope-rzg2m-103-esr60
+    build xenial-rocko rzg2 hihope-rzg2m 1.0.3         esr68 hihope-rzg2m-103-esr68
     build xenial-rocko rzg2 hihope-rzg2n 1.0.2         esr60 hihope-rzg2n-102-esr60
     build xenial-rocko rzg2 hihope-rzg2n 1.0.2         esr68 hihope-rzg2n-102-esr68
+    build xenial-rocko rzg2 hihope-rzg2n 1.0.2-update1 esr68 hihope-rzg2n-102u1-esr60
+    build xenial-rocko rzg2 hihope-rzg2n 1.0.2-update1 esr68 hihope-rzg2n-102u1-esr68
+    build xenial-rocko rzg2 hihope-rzg2n 1.0.3         esr60 hihope-rzg2n-103-esr60
+    build xenial-rocko rzg2 hihope-rzg2n 1.0.3         esr68 hihope-rzg2n-103-esr68
 else
     build "$@"
 fi
