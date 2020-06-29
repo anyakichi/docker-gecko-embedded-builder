@@ -4,44 +4,29 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+resolve_base()
+{
+    case "$1" in
+        ek874-*|hihope-rzg2*)
+            echo "anyakichi/yocto-rzg2-builder:$1"
+            ;;
+    esac
+}
+
 build()
 {
-    base=$1
-    version=$2
+    tag=$1
+    base=$(resolve_base "${tag%-*}")
+    version=${tag##*-}
 
     docker build \
         --build-arg builder_base=${base} \
-        -t ${DOCKER_REPO}:${base#*:}-${version} \
+        -t ${DOCKER_REPO}:${tag} \
         -f ${version}/Dockerfile ${version}
 }
 
 if [ $# -eq 0 ]; then
-    for v in esr60 esr68; do
-        build anyakichi/yocto-rzg2-builder:ek874-master "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-100 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-101 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-101u1 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-102 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-102u1 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-103 "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-103rt "$v"
-        build anyakichi/yocto-rzg2-builder:ek874-104 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-master "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-101 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-101u1 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-102 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-102u1 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-103 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-103rt "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-104 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-master "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-102 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-102u1 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-103 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-103rt "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-104 "$v"
-        build anyakichi/yocto-rzg2-builder:hihope-rzg2h-104 "$v"
-    done
+    build "${DOCKER_TAG}"
 else
     build "$@"
 fi
