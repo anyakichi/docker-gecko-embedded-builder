@@ -7,68 +7,41 @@ set -o pipefail
 build()
 {
     base=$1
-    platform=$2
-    machine=$3
-    version=$4
-    firefox=$5
-    tag=${6:-$3-$4-$5}
+    version=$2
 
     docker build \
-        --build-arg builder_base=anyakichi/yocto-builder:${base} \
-        ${DOCKER_BUILD_OPTS:-} \
-        -t ${DOCKER_REPO}:${base}-${firefox} \
-        -f ${firefox}/Dockerfile ${firefox}
-
-    docker build \
-        --build-arg builder_base=${DOCKER_REPO}:${base}-${firefox} \
-        --build-arg meta_rzg2_version=${version} \
-        --build-arg yocto_machine=${machine} \
-        ${DOCKER_BUILD_OPTS:-} \
-        -t ${DOCKER_REPO}:${tag} \
-        -f ${platform}/Dockerfile ${platform}
+        --build-arg builder_base=${base} \
+        -t ${DOCKER_REPO}:${base#*:}-${version} \
+        -f ${version}/Dockerfile ${version}
 }
 
 if [ $# -eq 0 ]; then
-    build xenial-rocko rzg2 ek874        master        esr60 ek874-esr60
-    build xenial-rocko rzg2 ek874        master        esr68 ek874-esr68
-    build xenial-rocko rzg2 ek874        1.0.0         esr60 ek874-100-esr60
-    build xenial-rocko rzg2 ek874        1.0.0         esr68 ek874-100-esr68
-    build xenial-rocko rzg2 ek874        1.0.1         esr60 ek874-101-esr60
-    build xenial-rocko rzg2 ek874        1.0.1         esr68 ek874-101-esr68
-    build xenial-rocko rzg2 ek874        1.0.1-update1 esr60 ek874-101u1-esr60
-    build xenial-rocko rzg2 ek874        1.0.1-update1 esr68 ek874-101u1-esr68
-    build xenial-rocko rzg2 ek874        1.0.2         esr60 ek874-102-esr60
-    build xenial-rocko rzg2 ek874        1.0.2         esr68 ek874-102-esr68
-    build xenial-rocko rzg2 ek874        1.0.2-update1 esr60 ek874-102u1-esr60
-    build xenial-rocko rzg2 ek874        1.0.2-update1 esr68 ek874-102u1-esr68
-    build xenial-rocko rzg2 ek874        1.0.3         esr60 ek874-103-esr60
-    build xenial-rocko rzg2 ek874        1.0.3         esr68 ek874-103-esr68
-    build xenial-rocko rzg2 ek874        1.0.3-RT      esr60 ek874-103rt-esr60
-    build xenial-rocko rzg2 ek874        1.0.3-RT      esr68 ek874-103rt-esr68
-    build xenial-rocko rzg2 hihope-rzg2m master        esr60 hihope-rzg2m-esr60
-    build xenial-rocko rzg2 hihope-rzg2m master        esr68 hihope-rzg2m-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr60 hihope-rzg2m-101-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.1         esr68 hihope-rzg2m-101-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr60 hihope-rzg2m-101u1-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.1-update1 esr68 hihope-rzg2m-101u1-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.2         esr60 hihope-rzg2m-102-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.2         esr68 hihope-rzg2m-102-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.2-update1 esr60 hihope-rzg2m-102u1-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.2-update1 esr68 hihope-rzg2m-102u1-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.3         esr60 hihope-rzg2m-103-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.3         esr68 hihope-rzg2m-103-esr68
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.3-RT      esr60 hihope-rzg2m-103rt-esr60
-    build xenial-rocko rzg2 hihope-rzg2m 1.0.3-RT      esr68 hihope-rzg2m-103rt-esr68
-    build xenial-rocko rzg2 hihope-rzg2n master        esr60 hihope-rzg2n-esr60
-    build xenial-rocko rzg2 hihope-rzg2n master        esr68 hihope-rzg2n-esr68
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.2         esr60 hihope-rzg2n-102-esr60
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.2         esr68 hihope-rzg2n-102-esr68
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.2-update1 esr68 hihope-rzg2n-102u1-esr60
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.2-update1 esr68 hihope-rzg2n-102u1-esr68
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.3         esr60 hihope-rzg2n-103-esr60
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.3         esr68 hihope-rzg2n-103-esr68
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.3-RT      esr60 hihope-rzg2n-103rt-esr60
-    build xenial-rocko rzg2 hihope-rzg2n 1.0.3-RT      esr68 hihope-rzg2n-103rt-esr68
+    for v in esr60 esr68; do
+        build anyakichi/yocto-rzg2-builder:ek874-master "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-100 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-101 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-101u1 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-102 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-102u1 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-103 "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-103rt "$v"
+        build anyakichi/yocto-rzg2-builder:ek874-104 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-master "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-101 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-101u1 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-102 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-102u1 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-103 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-103rt "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2m-104 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-master "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-102 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-102u1 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-103 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-103rt "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2n-104 "$v"
+        build anyakichi/yocto-rzg2-builder:hihope-rzg2h-104 "$v"
+    done
 else
     build "$@"
 fi

@@ -16,6 +16,8 @@ docker push ${DOCKER_REPO}:ek874-103-esr60
 docker push ${DOCKER_REPO}:ek874-103-esr68
 docker push ${DOCKER_REPO}:ek874-103rt-esr60
 docker push ${DOCKER_REPO}:ek874-103rt-esr68
+docker push ${DOCKER_REPO}:ek874-104-esr60
+docker push ${DOCKER_REPO}:ek874-104-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2m-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2m-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2m-101-esr60
@@ -30,6 +32,8 @@ docker push ${DOCKER_REPO}:hihope-rzg2m-103-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2m-103-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2m-103rt-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2m-103rt-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2m-104-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2m-104-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2n-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2n-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2n-102-esr60
@@ -40,3 +44,7 @@ docker push ${DOCKER_REPO}:hihope-rzg2n-103-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2n-103-esr68
 docker push ${DOCKER_REPO}:hihope-rzg2n-103rt-esr60
 docker push ${DOCKER_REPO}:hihope-rzg2n-103rt-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2n-104-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2n-104-esr68
+docker push ${DOCKER_REPO}:hihope-rzg2h-104-esr60
+docker push ${DOCKER_REPO}:hihope-rzg2h-104-esr68
