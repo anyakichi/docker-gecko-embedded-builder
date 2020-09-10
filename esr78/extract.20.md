@@ -1,4 +1,4 @@
-Clone the repositories required to build firefox 68.
+Clone the repositories required to build firefox 78.
 
 ```
 $ git clone -b firefox-78-wip https://github.com/webdino/meta-browser.git

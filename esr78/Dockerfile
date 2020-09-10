@@ -42,7 +42,7 @@ USER builder
 COPY firefox.conf /home/builder/
 
 RUN \
-  git clone --branch release --depth 1 https://github.com/mozilla/gecko-dev.git /home/builder/gecko-dev
+  git clone --branch esr78 --depth 1 https://github.com/mozilla/gecko-dev.git /home/builder/gecko-dev
 RUN \
   export SHELL=/bin/sh && \
   (cd /home/builder/gecko-dev && /bin/echo -e "2\n3\nY\nn\nn" | ./mach bootstrap) \
