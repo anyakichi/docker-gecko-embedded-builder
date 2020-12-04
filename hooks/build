@@ -16,17 +16,62 @@ resolve_base()
 build()
 {
     tag=$1
-    base=$(resolve_base "${tag%-*}")
-    version=${tag##*-}
+    base=${2:-$(resolve_base "${tag%-*}")}
+    version=${3:-${tag##*-}}
 
     docker build \
-        --build-arg builder_base=${base} \
-        -t ${DOCKER_REPO}:${tag} \
-        -f ${version}/Dockerfile ${version}
+        --build-arg builder_base="${base}" \
+        -t "${DOCKER_REPO}:${tag}" \
+        -f "${version}/Dockerfile" "${version}"
+}
+
+_build_rzg2()
+{
+    machine=$1
+    branch=$2
+    version=$3
+
+    tag="${machine}-$(echo "${branch}" \
+            | sed -e 's/^BSP-//' -e 's/-update/u/' -e 's/\.//g' -e 's/-RT/rt/'\
+            )-${version}"
+
+    docker build -t "${DOCKER_REPO}:${tag}" - <<EOF
+FROM ${DOCKER_REPO}:rzg2-${version}
+ENV YOCTO_MACHINE=${machine}
+ENV META_RZG2_BRANCH=${branch}
+EOF
+}
+
+build_rzg2()
+{
+    for v in esr60 esr68 esr78; do
+        build "rzg2-$v" anyakichi/yocto-rzg2-builder:template
+
+        for b in BSP-1.0.0 BSP-1.0.1{,-update1} BSP-1.0.2{,-update1} \
+                BSP-1.0.3{,-RT} BSP-1.0.4{,-RT}{,-update1} \
+                BSP-1.0.5{,-RT{,-update1}} BSP-1.0.6{,-RT,-update1}; do
+            _build_rzg2 ek874 "$b" "$v"
+            if [[ ! "$b" < BSP-1.0.1 ]]; then
+                _build_rzg2 hihope-rzg2m "$b" "$v"
+            fi
+            if [[ ! "$b" < BSP-1.0.2 ]]; then
+                _build_rzg2 hihope-rzg2n "$b" "$v"
+            fi
+            if [[ ! "$b" < BSP-1.0.4 ]]; then
+                _build_rzg2 hihope-rzg2h "$b" "$v"
+            fi
+        done
+    done
+
+    docker tag "${DOCKER_REPO}:rzg2-esr68" "${DOCKER_REPO}:rzg2"
 }
 
 if [ $# -eq 0 ]; then
-    build "${DOCKER_TAG}"
+    if [ "${DOCKER_TAG}" = "rzg2" ]; then
+        build_rzg2
+    else
+        build "${DOCKER_TAG}"
+    fi
 else
     build "$@"
 fi
