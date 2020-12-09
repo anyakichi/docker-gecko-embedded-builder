@@ -37,8 +37,7 @@ _build_rzg2()
 
     docker build -t "${DOCKER_REPO}:${tag}" - <<EOF
 FROM ${DOCKER_REPO}:rzg2-${version}
-ENV YOCTO_MACHINE=${machine}
-ENV META_RZG2_BRANCH=${branch}
+ENV YOCTO_MACHINE=${machine} META_RZG2_BRANCH=${branch}
 EOF
 }
 
