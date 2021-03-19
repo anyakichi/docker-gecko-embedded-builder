@@ -43,7 +43,7 @@ EOF
 
 build_rzg2()
 {
-    for v in esr60 esr68 esr78; do
+    for v in esr60 esr68 esr78 release; do
         build "rzg2-$v" anyakichi/yocto-rzg2-builder:template
 
         for b in BSP-1.0.0 BSP-1.0.1{,-update1} BSP-1.0.2{,-update1} \
