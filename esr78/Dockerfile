@@ -2,6 +2,7 @@ ARG builder_base="anyakichi/yocto-builder"
 FROM ${builder_base}
 
 RUN \
+  . /etc/os-release && [ "$VERSION_ID" != 16.04 ] && exit 0; \
   apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     software-properties-common \
