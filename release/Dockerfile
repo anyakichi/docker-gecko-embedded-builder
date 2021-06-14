@@ -4,8 +4,6 @@ FROM ${builder_base}
 RUN \
   apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    libcurl4-openssl-dev \
-    mercurial \
     software-properties-common \
   && add-apt-repository -y ppa:ubuntu-toolchain-r/test \
   && apt-get update \
@@ -20,23 +18,13 @@ RUN \
     python3.8 python3.8-dev python3.8-distutils \
   && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 10 --slave /usr/bin/python3-config python3-config /usr/bin/python3.5-config \
   && update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 20 --slave /usr/bin/python3-config python3-config /usr/bin/python3.8-config \
-  && rm /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-xenial.list*
+  && rm /etc/apt/sources.list.d/deadsnakes-ubuntu-ppa-xenial.list* \
+  && rm -rf /var/lib/apt/lists/*
 
 USER builder
 COPY firefox.conf /home/builder/
 
-RUN \
-  wget -O /home/builder/bootstrap.py https://hg.mozilla.org/mozilla-central/raw-file/default/python/mozboot/bin/bootstrap.py
-RUN \
-  export SHELL=/bin/sh && \
-  (cd /home/builder && python3 bootstrap.py --application-choice=browser --no-interactive --vcs=git) \
-  && rm -rf /home/builder/bootstrap.py /home/builder/mozilla-unified
-
 USER root
-
-RUN \
-  rm -rf /var/lib/apt/lists/*
-
 COPY extract.20.md /etc/buildenv.d/
 COPY setup.20.md /etc/buildenv.d/
 

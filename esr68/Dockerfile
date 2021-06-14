@@ -5,7 +5,7 @@ RUN \
   apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     software-properties-common \
-  && add-apt-repository ppa:ubuntu-toolchain-r/test \
+  && add-apt-repository -y ppa:ubuntu-toolchain-r/test \
   && apt-get update \
   && DEBIAN_FRONTEND=noninteractive apt-get install -y \
     gcc-7 g++-7 \
