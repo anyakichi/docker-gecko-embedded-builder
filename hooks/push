@@ -19,7 +19,8 @@ if [ "${DOCKER_TAG}" = "rzg2" ]; then
 
         for b in BSP-1.0.0 BSP-1.0.1{,-update1} BSP-1.0.2{,-update1} \
                 BSP-1.0.3{,-RT} BSP-1.0.4{,-RT}{,-update1} \
-                BSP-1.0.5{,-RT{,-update1}} BSP-1.0.6{,-RT,-update1}; do
+                BSP-1.0.5{,-RT{,-update1}} BSP-1.0.6{,-RT,-update1} \
+                BSP-1.0.7{,-RT} BSP-1.0.8; do
             _push_rzg2 ek874 "$b" "$v"
             if [[ ! "$b" < BSP-1.0.1 ]]; then
                 _push_rzg2 hihope-rzg2m "$b" "$v"
