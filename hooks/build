@@ -30,13 +30,14 @@ _build_rzg2()
     machine=$1
     branch=$2
     version=$3
+    distro=$4
 
     tag="${machine}-$(echo "${branch}" \
             | sed -e 's/^BSP-//' -e 's/-update/u/' -e 's/\.//g' -e 's/-RT/rt/'\
             )-${version}"
 
     docker build -t "${DOCKER_REPO}:${tag}" - <<EOF
-FROM ${DOCKER_REPO}:rzg2-${version}
+FROM ${DOCKER_REPO}:rzg2-${distro}-${version}
 ENV YOCTO_MACHINE=${machine} META_RZG2_BRANCH=${branch}
 EOF
 }
@@ -44,26 +45,33 @@ EOF
 build_rzg2()
 {
     for v in esr60 esr68 esr78 release; do
-        build "rzg2-$v" anyakichi/yocto-rzg2-builder:template
+        build "rzg2-xenial-$v" anyakichi/yocto-rzg2-builder:xenial-rocko
+        build "rzg2-bionic-$v" anyakichi/yocto-rzg2-builder:bionic-rocko
 
         for b in BSP-1.0.0 BSP-1.0.1{,-update1} BSP-1.0.2{,-update1} \
                 BSP-1.0.3{,-RT} BSP-1.0.4{,-RT}{,-update1} \
-                BSP-1.0.5{,-RT{,-update1}} BSP-1.0.6{,-RT,-update1} \
-                BSP-1.0.7{,-RT} BSP-1.0.8; do
-            _build_rzg2 ek874 "$b" "$v"
+                BSP-1.0.5{,-RT{,-update1}} BSP-1.0.6{,-RT,-update1}; do
+            _build_rzg2 ek874 "$b" "$v" xenial
             if [[ ! "$b" < BSP-1.0.1 ]]; then
-                _build_rzg2 hihope-rzg2m "$b" "$v"
+                _build_rzg2 hihope-rzg2m "$b" "$v" xenial
             fi
             if [[ ! "$b" < BSP-1.0.2 ]]; then
-                _build_rzg2 hihope-rzg2n "$b" "$v"
+                _build_rzg2 hihope-rzg2n "$b" "$v" xenial
             fi
             if [[ ! "$b" < BSP-1.0.4 ]]; then
-                _build_rzg2 hihope-rzg2h "$b" "$v"
+                _build_rzg2 hihope-rzg2h "$b" "$v" xenial
             fi
+        done
+
+        for b in BSP-1.0.7{,-RT} BSP-1.0.8; do
+            _build_rzg2 ek874 "$b" "$v" bionic
+            _build_rzg2 hihope-rzg2m "$b" "$v" bionic
+            _build_rzg2 hihope-rzg2n "$b" "$v" bionic
+            _build_rzg2 hihope-rzg2h "$b" "$v" bionic
         done
     done
 
-    docker tag "${DOCKER_REPO}:rzg2-esr68" "${DOCKER_REPO}:rzg2"
+    docker tag "${DOCKER_REPO}:rzg2-bionic-esr78" "${DOCKER_REPO}:rzg2"
 }
 
 if [ $# -eq 0 ]; then
