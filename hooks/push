@@ -15,7 +15,8 @@ _push_rzg2()
 
 if [ "${DOCKER_TAG}" = "rzg2" ]; then
     for v in esr60 esr68 esr78 release; do
-        docker push "${DOCKER_REPO}:rzg2-${v}"
+        docker push "${DOCKER_REPO}:rzg2-xenial-${v}"
+        docker push "${DOCKER_REPO}:rzg2-bionic-${v}"
 
         for b in BSP-1.0.0 BSP-1.0.1{,-update1} BSP-1.0.2{,-update1} \
                 BSP-1.0.3{,-RT} BSP-1.0.4{,-RT}{,-update1} \
