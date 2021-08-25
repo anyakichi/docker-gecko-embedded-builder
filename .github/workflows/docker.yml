@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        firefox: [[68, esr68], [78, esr78], [91, release]]
+        firefox: [[68, esr68], [78, esr78], [91, esr91], [91, release]]
         base:
           [
             [ek874-108, "anyakichi/yocto-rzg2-builder:ek874-108"],
