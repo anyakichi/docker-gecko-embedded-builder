@@ -1,5 +1,8 @@
 name: Publish Docker image
-on: [push]
+on:
+  push:
+  schedule:
+    - cron: '40 21 1 * *'
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
