@@ -2,7 +2,7 @@ name: Publish Docker image
 on:
   push:
   schedule:
-    - cron: '40 21 1 * *'
+    - cron: "40 21 1 * *"
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -15,6 +15,8 @@ jobs:
             [hihope-rzg2h-108, "anyakichi/yocto-rzg2-builder:hihope-rzg2h-108"],
             [hihope-rzg2m-108, "anyakichi/yocto-rzg2-builder:hihope-rzg2m-108"],
             [hihope-rzg2n-108, "anyakichi/yocto-rzg2-builder:hihope-rzg2n-108"],
+            [smarc-rzg2l-13, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-13"],
+            [smarc-rzg2lc-13, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-13"],
           ]
     steps:
       - uses: actions/checkout@v2
