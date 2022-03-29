@@ -21,6 +21,9 @@ jobs:
             [smarc-rzg2lc-13u1, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-13u1"],
             [smarc-rzg2l-13u2, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-13u2"],
             [smarc-rzg2lc-13u2, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-13u2"],
+            [smarc-rzg2l-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-14"],
+            [smarc-rzg2lc-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-14"],
+            [smarc-rzg2ul-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-14"],
           ]
     steps:
       - uses: actions/checkout@v2
