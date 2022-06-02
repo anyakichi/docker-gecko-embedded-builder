@@ -6,9 +6,10 @@ $ git clone -b firefox-${FIREFOX_VERSION}-wip https://github.com/webdino/meta-br
 $ git clone https://github.com/meta-rust/meta-rust.git
 $ if git -C meta-rust rev-parse --verify origin/${YOCTO_BRANCH} &>/dev/null; then \
     git -C meta-rust checkout ${YOCTO_BRANCH}; \
+  else \
+    git -C meta-rust checkout c654f5cb928bd4f4c7da7d74a8356fd2a94283f6; \
   fi
-$ if [[ "\${YOCTO_BRANCH}" =~ ^rocko|dunfell$ ]]; then \
-    git -C meta-rust checkout 1b59fd45906082c978d0a0a6e4e51a0ea4aa32c7; \
+$ if [[ "\${YOCTO_BRANCH}" == rocko ]]; then \
     git -C meta-rust revert 647b976da2a9161ceb01ad477216480fc1c88af8 < /dev/null; \
   fi
 
