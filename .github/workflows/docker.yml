@@ -22,13 +22,13 @@ jobs:
             [smarc-rzg2l-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-14"],
             [smarc-rzg2lc-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-14"],
             [smarc-rzg2ul-14, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-14"],
-            [ek874-300, "anyakichi/yocto-rzg2-builder:ek874-300"],
-            [hihope-rzg2h-300, "anyakichi/yocto-rzg2-builder:hihope-rzg2h-300"],
-            [hihope-rzg2m-300, "anyakichi/yocto-rzg2-builder:hihope-rzg2m-300"],
-            [hihope-rzg2n-300, "anyakichi/yocto-rzg2-builder:hihope-rzg2n-300"],
-            [smarc-rzg2l-300, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-300"],
-            [smarc-rzg2lc-300, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-300"],
-            [smarc-rzg2ul-300, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-300"],
+            [ek874-301, "anyakichi/yocto-rzg2-builder:ek874-301"],
+            [hihope-rzg2h-301, "anyakichi/yocto-rzg2-builder:hihope-rzg2h-301"],
+            [hihope-rzg2m-301, "anyakichi/yocto-rzg2-builder:hihope-rzg2m-301"],
+            [hihope-rzg2n-301, "anyakichi/yocto-rzg2-builder:hihope-rzg2n-301"],
+            [smarc-rzg2l-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-301"],
+            [smarc-rzg2lc-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-301"],
+            [smarc-rzg2ul-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-301"],
           ]
     steps:
       - uses: actions/checkout@v2
