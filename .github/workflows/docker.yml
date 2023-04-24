@@ -1,8 +1,7 @@
 name: Publish Docker image
 on:
   push:
-  schedule:
-    - cron: "40 21 1 * *"
+  workflow_dispatch:
 jobs:
   build_and_push:
     runs-on: ubuntu-latest
@@ -29,6 +28,13 @@ jobs:
             [smarc-rzg2l-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-301"],
             [smarc-rzg2lc-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-301"],
             [smarc-rzg2ul-301, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-301"],
+            [ek874-303, "anyakichi/yocto-rzg2-builder:ek874-303"],
+            [hihope-rzg2h-303, "anyakichi/yocto-rzg2-builder:hihope-rzg2h-303"],
+            [hihope-rzg2m-303, "anyakichi/yocto-rzg2-builder:hihope-rzg2m-303"],
+            [hihope-rzg2n-303, "anyakichi/yocto-rzg2-builder:hihope-rzg2n-303"],
+            [smarc-rzg2l-303, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-303"],
+            [smarc-rzg2lc-303, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-303"],
+            [smarc-rzg2ul-303, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-303"],
           ]
     steps:
       - uses: actions/checkout@v2
