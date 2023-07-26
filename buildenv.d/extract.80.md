@@ -3,11 +3,22 @@ Clone the repositories required to build firefox ${FIREFOX_VERSION}.
 ```
 $ git clone -b firefox-${FIREFOX_VERSION}-wip https://github.com/webdino/meta-browser.git
 
-$ git clone https://github.com/meta-rust/meta-rust.git
-$ git -C meta-rust checkout 59c4377bdbc67aa306068d19b016136998fadcec
+$ if [ ! -d meta-rust ]; then \
+    git clone https://github.com/meta-rust/meta-rust.git; \
+  fi
+$ git -C meta-rust checkout 796da2dfb669f222d7fb82a9e1ffaf605d5ac16d
 
-$ git clone https://github.com/webdino/meta-clang.git
+$ if [ ! -d meta-clang ]; then \
+    git clone https://github.com/kraj/meta-clang.git; \
+  fi
 $ if git -C meta-clang rev-parse --verify origin/${YOCTO_BRANCH} &>/dev/null; then \
     git -C meta-clang checkout ${YOCTO_BRANCH}; \
+  fi
+
+$ if [ ! -d meta-openembedded ]; then \
+    git clone https://git.openembedded.org/meta-openembedded; \
+  fi
+$ if git -C meta-openembedded rev-parse --verify origin/${YOCTO_BRANCH} &>/dev/null; then \
+    git -C meta-openembedded checkout ${YOCTO_BRANCH}; \
   fi
 ```
