@@ -42,6 +42,13 @@ jobs:
             [smarc-rzg2l-305, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-305"],
             [smarc-rzg2lc-305, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-305"],
             [smarc-rzg2ul-305, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-305"],
+            [ek874-305u3, "anyakichi/yocto-rzg2-builder:ek874-305u3"],
+            [hihope-rzg2h-305u3, "anyakichi/yocto-rzg2-builder:hihope-rzg2h-305u3"],
+            [hihope-rzg2m-305u3, "anyakichi/yocto-rzg2-builder:hihope-rzg2m-305u3"],
+            [hihope-rzg2n-305u3, "anyakichi/yocto-rzg2-builder:hihope-rzg2n-305u3"],
+            [smarc-rzg2l-305u3, "anyakichi/yocto-rzg2-builder:smarc-rzg2l-305u3"],
+            [smarc-rzg2lc-305u3, "anyakichi/yocto-rzg2-builder:smarc-rzg2lc-305u3"],
+            [smarc-rzg2ul-305u3, "anyakichi/yocto-rzg2-builder:smarc-rzg2ul-305u3"],
           ]
     steps:
       - uses: actions/checkout@v4
