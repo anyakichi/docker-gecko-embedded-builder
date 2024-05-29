@@ -1,7 +1,7 @@
 Clone the repositories required to build firefox ${FIREFOX_VERSION}.
 
 ```
-$ git clone -b gem-firefox-102.0.0esr https://github.com/webdino/meta-browser.git
+$ git clone -b gem-firefox-102.15.1esr https://github.com/webdino/meta-browser.git
 
 $ git clone https://github.com/meta-rust/meta-rust.git
 $ git -C meta-rust checkout 59c4377bdbc67aa306068d19b016136998fadcec
